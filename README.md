@@ -19,9 +19,11 @@ Static site (HTML / CSS / vanilla JS) for TDTD Models, New York. Hosted on GitHu
 
 Keep photos around 1500px on the long edge (JPEG, quality ~80) so the site stays fast.
 
-## Making the application form work
-The form posts to Formspree. Create a free form at https://formspree.io, copy its ID, and in `submit.html` replace
-`YOUR_FORM_ID` in the form's `action`. Until then, submitting opens the visitor's email app with the answers filled in.
+## Application form
+`submit.html` posts to Formspree (form ID `xrppvgpb`). It collects personal details, measurements (imperial or metric), four digitals and social handles.
+- Photos are resized in the browser (max 1600px) before upload. File attachments need a Formspree plan that supports uploads.
+  If yours doesn't, set `FORM_UPLOADS = false` at the top of the form section in `js/main.js` and the photo slots become one "link to your digitals" field.
+- Applicants under 18 are asked for a parent/guardian automatically (from the date of birth).
 
 ## Changing the header / footer / contact info
 `js/main.js` (top of the file) holds the email, Instagram link and menu items. They update on every page.

@@ -22,30 +22,71 @@
   </header>
   <main id="main" class="apply" style="padding-top:clamp(34px,5vw,70px)">
     <div class="apply-copy">
-      <p>Tell us a little about yourself and send a few recent, natural photos. Our team reviews every application and will be in touch if there is a fit.</p>
+      <p>Tell us a little about yourself, add your measurements and upload a few recent digitals. Our team reviews every application and will be in touch if there is a fit.</p>
       <ul>
-        <li><b>Photos</b>Clear, recent snapshots: a head shot, a full length and a profile, in natural light with no filters.</li>
-        <li><b>Age</b>Applicants under 18 must apply with a parent or guardian.</li>
+        <li><b>Digitals</b>Four recent, unedited photos: headshot, profile, full length and three-quarter. Natural light, plain background, hair back, no makeup, no filters, in a fitted top and bottoms or jeans.</li>
+        <li><b>Measurements</b>Have someone else measure you if you can, with the tape flat against your body.</li>
+        <li><b>Under 18</b>Applicants under 18 must include a parent or guardian&rsquo;s details.</li>
+        <li><b>No fees</b>We never request nude or lingerie photos, and we never ask for payment of any kind to apply.</li>
         <li><b>Questions</b><a href="mailto:tdtdmodels@gmail.com">tdtdmodels@gmail.com</a></li>
       </ul>
     </div>
 
-    <!-- Set up a free form at formspree.io, then replace YOUR_FORM_ID below with your form's ID. -->
-    <form class="form" id="applyForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form class="form" id="applyForm" action="https://formspree.io/f/xrppvgpb" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="_subject" value="New TDTD Models application">
       <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-      <div class="field"><label for="name">Full name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+      <h2 class="form-section">Personal information</h2>
+      <div class="field"><label for="first">First name</label><input id="first" name="first_name" type="text" autocomplete="given-name" required></div>
+      <div class="field"><label for="last">Last name</label><input id="last" name="last_name" type="text" autocomplete="family-name" required></div>
       <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-      <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
-      <div class="field"><label for="instagram">Instagram <i>(optional)</i></label><input id="instagram" name="instagram" type="text" placeholder="@handle"></div>
-      <div class="field"><label for="age">Age</label><input id="age" name="age" type="number" min="1" max="99" required></div>
+      <div class="field"><label for="phone">Mobile</label><input id="phone" name="mobile" type="tel" autocomplete="tel" required></div>
+      <div class="field"><label for="dob">Date of birth</label><input id="dob" name="date_of_birth" type="date" autocomplete="bday" required></div>
       <div class="field"><label for="division">Division</label>
-        <select id="division" name="division" required><option value="" selected disabled>Select</option><option>Women</option><option>Men</option></select></div>
-      <div class="field"><label for="height">Height</label><input id="height" name="height" type="text" placeholder="5&rsquo;9&quot;"></div>
-      <div class="field"><label for="location">City &amp; state</label><input id="location" name="location" type="text" autocomplete="address-level2"></div>
-      <div class="field full"><label for="photos">Photo link</label><input id="photos" name="photos" type="url" placeholder="Link to a shared album, Drive folder or portfolio" required>
-        <span class="hint">Share a link with at least three recent photos.</span></div>
+        <select id="division" name="division" required><option value="" selected disabled>Select</option><option value="Women">Women</option><option value="Men">Men</option></select></div>
+      <div class="field"><label for="city">City</label><input id="city" name="city" type="text" autocomplete="address-level2" required></div>
+      <div class="field"><label for="state">State / region</label><input id="state" name="state" type="text" autocomplete="address-level1"></div>
+      <div class="field full"><label for="citizenship">Country of citizenship</label><input id="citizenship" name="citizenship" type="text" autocomplete="country-name" required></div>
+
+      <div class="guardian full" id="guardian" hidden>
+        <p class="hint">You are under 18, so a parent or guardian needs to be included on this application.</p>
+        <div class="form guardian-grid">
+          <div class="field"><label for="g-name">Parent / guardian name</label><input id="g-name" name="guardian_name" type="text"></div>
+          <div class="field"><label for="g-contact">Parent / guardian email or phone</label><input id="g-contact" name="guardian_contact" type="text"></div>
+        </div>
+      </div>
+
+      <h2 class="form-section">Measurements</h2>
+      <div class="field full">
+        <span class="lbl">Units</span>
+        <div class="seg" role="radiogroup" aria-label="Units">
+          <label><input type="radio" name="units" value="Imperial (ft / in)" checked><span>Imperial (ft / in)</span></label>
+          <label><input type="radio" name="units" value="Metric (cm)"><span>Metric (cm)</span></label>
+        </div>
+      </div>
+      <div class="field" data-unit="imperial"><label for="ft">Height</label>
+        <div class="pair"><input id="ft" name="height_feet" type="number" min="3" max="7" placeholder="ft"><input id="in" name="height_inches" type="number" min="0" max="11" placeholder="in"></div></div>
+      <div class="field" data-unit="metric" hidden><label for="hcm">Height (cm)</label><input id="hcm" name="height_cm" type="number" min="100" max="230"></div>
+      <div class="field"><label for="shoe">Shoe size (US)</label><input id="shoe" name="shoe_size_us" type="text" inputmode="decimal" required></div>
+      <div class="field"><label for="eyes">Eye color</label><input id="eyes" name="eye_color" type="text" required></div>
+      <div class="field"><label for="hair">Hair color</label><input id="hair" name="hair_color" type="text" required></div>
+      <div class="field"><label for="bust" id="bustLabel">Bust <i data-suffix>(in)</i></label><input id="bust" name="bust_chest" type="number" step="0.25" min="10" max="80" required></div>
+      <div class="field"><label for="waist">Waist <i data-suffix>(in)</i></label><input id="waist" name="waist" type="number" step="0.25" min="10" max="80" required></div>
+      <div class="field"><label for="hips">Hips <i data-suffix>(in)</i></label><input id="hips" name="hips" type="number" step="0.25" min="10" max="90" required></div>
+
+      <h2 class="form-section">Digitals</h2>
+      <p class="hint full" id="digitalsHint">Upload four recent photos. Large phone photos are resized automatically before sending.</p>
+      <div class="slots full" id="slots">
+        <label class="slot"><input type="file" name="digital_headshot" accept="image/*" required><span class="slot-img"></span><span class="slot-label">Headshot</span></label>
+        <label class="slot"><input type="file" name="digital_profile" accept="image/*" required><span class="slot-img"></span><span class="slot-label">Profile</span></label>
+        <label class="slot"><input type="file" name="digital_full_length" accept="image/*" required><span class="slot-img"></span><span class="slot-label">Full length</span></label>
+        <label class="slot"><input type="file" name="digital_three_quarter" accept="image/*" required><span class="slot-img"></span><span class="slot-label">Three-quarter</span></label>
+      </div>
+      <div class="field full" id="linkField" hidden><label for="photos">Link to your digitals</label><input id="photos" name="photos_link" type="url" placeholder="Shared album, Drive folder or portfolio link"></div>
+
+      <h2 class="form-section">Social</h2>
+      <div class="field"><label for="instagram">Instagram <i>(optional)</i></label><input id="instagram" name="instagram" type="text" placeholder="@handle"></div>
+      <div class="field"><label for="tiktok">TikTok <i>(optional)</i></label><input id="tiktok" name="tiktok" type="text" placeholder="@handle"></div>
       <div class="field full"><label for="message">Anything else <i>(optional)</i></label><textarea id="message" name="message"></textarea></div>
 
       <div class="form-foot">

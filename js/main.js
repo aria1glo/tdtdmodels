@@ -132,27 +132,111 @@
   }
 
   /* ---------- application form ---------- */
+  // Digital uploads need a Formspree plan that accepts file attachments.
+  // If yours does not, set this to false: the photo slots are replaced by one "link to your digitals" field.
+  const FORM_UPLOADS = true;
+
   function form() {
     const f = $("#applyForm"); if (!f) return;
     const msg = $("#formMsg");
-    const say = (t, ok) => { msg.textContent = t; msg.classList.add("show"); msg.style.borderColor = ok ? "#1d6b3a" : ""; msg.style.color = ok ? "#1d6b3a" : ""; msg.scrollIntoView({ block: "center", behavior: "smooth" }); };
+    const say = (t, ok) => {
+      msg.textContent = t; msg.classList.add("show");
+      msg.style.borderColor = ok ? "#1d6b3a" : ""; msg.style.color = ok ? "#1d6b3a" : "";
+      msg.scrollIntoView({ block: "center", behavior: "smooth" });
+    };
+    // show/hide a block AND enable/disable its inputs, so hidden fields are never sent or required
+    const setShown = (el, show, req) => {
+      el.hidden = !show;
+      el.querySelectorAll("input, select, textarea").forEach(i => {
+        i.disabled = !show;
+        if (req && req.includes(i.name)) i.required = show;
+      });
+    };
+
+    /* units: imperial (ft + in) or metric (cm) */
+    const unitFields = () => {
+      const metric = f.elements.units.value.startsWith("Metric");
+      f.querySelectorAll('[data-unit="imperial"]').forEach(el => setShown(el, !metric, ["height_feet", "height_inches"]));
+      f.querySelectorAll('[data-unit="metric"]').forEach(el => setShown(el, metric, ["height_cm"]));
+      f.querySelectorAll("[data-suffix]").forEach(i => { i.textContent = metric ? "(cm)" : "(in)"; });
+      ["bust", "waist", "hips"].forEach(id => { const el = $("#" + id); el.min = metric ? 40 : 10; el.max = metric ? 200 : 90; el.step = metric ? 0.5 : 0.25; });
+    };
+    f.querySelectorAll('input[name="units"]').forEach(r => r.addEventListener("change", unitFields));
+    unitFields();
+
+    /* division: women have a bust, men a chest */
+    $("#division").addEventListener("change", e => {
+      $("#bustLabel").firstChild.textContent = e.target.value === "Men" ? "Chest " : "Bust ";
+    });
+
+    /* under 18: ask for a parent or guardian */
+    const guardian = $("#guardian");
+    const checkAge = () => {
+      const v = $("#dob").value; let minor = false;
+      if (v) { const d = new Date(v), n = new Date(); let age = n.getFullYear() - d.getFullYear(); const m = n.getMonth() - d.getMonth(); if (m < 0 || (m === 0 && n.getDate() < d.getDate())) age--; minor = age < 18; }
+      setShown(guardian, minor, ["guardian_name", "guardian_contact"]);
+    };
+    $("#dob").addEventListener("change", checkAge);
+    $("#dob").max = new Date().toISOString().slice(0, 10);
+    setShown(guardian, false, ["guardian_name", "guardian_contact"]);
+
+    /* digitals: photo slots with previews, or a plain link if uploads are off */
+    const slots = $("#slots");
+    if (!FORM_UPLOADS) {
+      slots.querySelectorAll("input").forEach(i => { i.required = false; i.disabled = true; });
+      slots.hidden = true;
+      setShown($("#linkField"), true, ["photos_link"]);
+      $("#digitalsHint").textContent = "Share a link to four recent photos: headshot, profile, full length and three-quarter.";
+    } else {
+      slots.querySelectorAll(".slot").forEach(slot => {
+        const input = $("input", slot), pic = $(".slot-img", slot);
+        input.addEventListener("change", () => {
+          const file = input.files[0];
+          if (!file) { pic.style.backgroundImage = ""; slot.classList.remove("has-file"); return; }
+          pic.style.backgroundImage = `url(${URL.createObjectURL(file)})`; slot.classList.add("has-file");
+        });
+      });
+    }
+
+    /* shrink big phone photos before upload (max 1600px, JPEG) */
+    async function shrink(file) {
+      try {
+        const url = URL.createObjectURL(file);
+        const img = await new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = no; i.src = url; });
+        const k = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+        const c = document.createElement("canvas"); c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+        const blob = await new Promise(ok => c.toBlob(ok, "image/jpeg", 0.86));
+        return blob && blob.size < file.size ? blob : file;
+      } catch (e) { return file; }
+    }
+
     f.addEventListener("submit", async e => {
       e.preventDefault();
       if (f.elements._gotcha && f.elements._gotcha.value) return;     // spam trap
-      const data = new FormData(f);
       const action = f.getAttribute("action") || "";
-      if (action.includes("YOUR_FORM_ID")) {                          // not connected yet: open an email instead
-        const body = [...data.entries()].filter(([k]) => !k.startsWith("_")).map(([k, v]) => `${k}: ${v}`).join("\n");
+      const data = new FormData(f);
+      if (action.includes("YOUR_FORM_ID")) {                          // form not connected yet: fall back to email
+        const body = [...data.entries()].filter(([k, v]) => !k.startsWith("_") && typeof v === "string").map(([k, v]) => `${k}: ${v}`).join("\n");
         location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Model application")}&body=${encodeURIComponent(body)}`;
         return;
       }
       const btn = $("button[type=submit]", f); btn.disabled = true; btn.textContent = "Sending…";
       try {
+        if (FORM_UPLOADS) {
+          for (const input of slots.querySelectorAll("input[type=file]")) {
+            const file = input.files[0]; if (!file) continue;
+            const small = await shrink(file);
+            data.set(input.name, small, `${input.name}.jpg`);
+          }
+        }
         const r = await fetch(action, { method: "POST", body: data, headers: { Accept: "application/json" } });
         if (!r.ok) throw new Error(r.status);
-        f.reset(); say("Thank you. Your application has been received and our team will be in touch.", true);
+        f.reset(); unitFields(); checkAge();
+        slots.querySelectorAll(".slot").forEach(s => { $(".slot-img", s).style.backgroundImage = ""; s.classList.remove("has-file"); });
+        say("Thank you. Your application has been received and our team will be in touch.", true);
       } catch (err) {
-        say(`Something went wrong sending that. Please email ${EMAIL} directly.`, false);
+        say(`Something went wrong sending that. Please email ${EMAIL} directly with your photos.`, false);
       }
       btn.disabled = false; btn.textContent = "Send application";
     });
