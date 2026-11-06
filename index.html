@@ -1,513 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Aria Model Management</title>
-
-    <meta name="description" content="Aria Model Management represents fashion models, commercial talent, and digital creators across the globe.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TDTD Models | New York Model Management</title>
+  <meta name="description" content="TDTD Models is a New York based model agency developing talent for clients across the country.">
+  <meta name="theme-color" content="#0b0b0b">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+<body class="home" data-page="home">
+  <a class="skip" href="#main">Skip to content</a>
+  <div id="site-header"></div>
 
-<body>
-
-<header>
-
-    <nav class="navbar">
-
-        <div class="logo">
-            <a href="index.html">ARIA</a>
-        </div>
-
-        <ul class="nav-links">
-
-            <li><a href="talent.html">Talent</a></li>
-
-            <li><a href="about.html">About</a></li>
-
-            <li><a href="submit.html">Apply</a></li>
-
-        </ul>
-
+  <section class="hero">
+    <canvas aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <img class="hero-logo" src="images/tdtd-logo-white.png" alt="TDTD Models">
+      <p class="hero-tag">New York</p>
+    </div>
+    <nav class="hero-links" aria-label="Divisions">
+      <a href="women.html">Women</a>
+      <a href="men.html">Men</a>
     </nav>
-
-</header>
-
-<section class="hero">
-
-    <div class="hero-overlay"></div>
-
-    <img
-        src="images/hero.jpg"
-        alt="Aria Model Management"
-        class="hero-image"
-    >
-
-    <div class="hero-content">
-
-        <p class="hero-subtitle">
-            NEW YORK • LOS ANGELES • WORLDWIDE
-        </p>
-
-        <h1>
-
-            Discovering
-
-            <br>
-
-            Tomorrow's
-
-            <br>
-
-            Icons
-
-        </h1>
-
-        <p class="hero-text">
-
-            Aria Model Management represents fashion models,
-            commercial talent, creators, and artists with an
-            editorial vision built for today's industry.
-
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="talent.html" class="btn btn-light">
-
-                View Talent
-
-            </a>
-
-            <a href="submit.html" class="btn btn-dark">
-
-                Apply Now
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="intro">
-
-    <div class="container">
-
-        <h2>
-
-            Modern Representation.
-
-            Timeless Careers.
-
-        </h2>
-
-        <p>
-
-            We discover exceptional talent and cultivate lasting
-            careers across fashion, beauty, commercial advertising,
-            luxury brands, and digital media.
-
-        </p>
-
-    </div>
-
-</section>
-
-<section class="featured-models">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <p>Featured Talent</p>
-
-            <h2>Featured Models</h2>
-
-        </div>
-
-        <div class="model-grid">
-
-            <div class="model-card">
-
-                <img
-                    src="images/models/model1.jpg"
-                    alt="Model"
-                >
-
-                <div class="model-info">
-
-                    <h3>Emily</h3>
-
-                    <span>Women</span>
-
-                </div>
-
-            </div>
-
-            <div class="model-card">
-
-                <img
-                    src="images/models/model2.jpg"
-                    alt="Model"
-                >
-
-                <div class="model-info">
-
-                    <h3>Sophia</h3>
-
-                    <span>Women</span>
-
-                </div>
-
-            </div>
-
-            <div class="model-card">
-
-                <img
-                    src="images/models/model3.jpg"
-                    alt="Model"
-                >
-
-                <div class="model-info">
-
-                    <h3>Jordan</h3>
-
-                    <span>Men</span>
-
-                </div>
-
-            </div>
-
-            <div class="model-card">
-
-                <img
-                    src="images/models/model4.jpg"
-                    alt="Model"
-                >
-
-                <div class="model-info">
-
-                    <h3>Avery</h3>
-
-                    <span>Development</span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-  <section class="about-preview">
-
-    <div class="container split-layout">
-
-        <div class="split-image">
-
-            <img
-                src="images/about.jpg"
-                alt="Aria Model Management"
-            >
-
-        </div>
-
-        <div class="split-content">
-
-            <p class="section-tag">
-                ABOUT
-            </p>
-
-            <h2>
-
-                Building careers that last beyond the runway.
-
-            </h2>
-
-            <p>
-
-                Aria Model Management is a boutique agency dedicated to
-                discovering and developing exceptional talent. We work
-                closely with our models to create meaningful opportunities
-                across fashion editorials, luxury campaigns, beauty,
-                commercial advertising, and digital media.
-
-            </p>
-
-            <p>
-
-                Our philosophy is simple: every model deserves
-                individualized guidance, honest representation, and a team
-                invested in their long-term success.
-
-            </p>
-
-            <a href="about.html" class="text-link">
-
-                Learn More →
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="cta-section">
-
-    <div class="cta-overlay"></div>
-
-    <div class="container">
-
-        <div class="cta-content">
-
-            <p>
-
-                BECOME A MODEL
-
-            </p>
-
-            <h2>
-
-                Your journey starts here.
-
-            </h2>
-
-            <p>
-
-                We're always looking for new faces from every background.
-                No prior experience is required.
-
-            </p>
-
-            <a href="submit.html" class="btn btn-light">
-
-                Submit Your Application
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="editorial">
-
-    <div class="container">
-
-        <div class="editorial-grid">
-
-            <div>
-
-                <img
-                    src="images/editorial1.jpg"
-                    alt=""
-                >
-
-            </div>
-
-            <div>
-
-                <img
-                    src="images/editorial2.jpg"
-                    alt=""
-                >
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="stats">
-
-    <div class="container">
-
-        <div class="stats-grid">
-
-            <div>
-
-                <h2>100+</h2>
-
-                <p>Models Represented</p>
-
-            </div>
-
-            <div>
-
-                <h2>25+</h2>
-
-                <p>Brand Partners</p>
-
-            </div>
-
-            <div>
-
-                <h2>12</h2>
-
-                <p>Countries</p>
-
-            </div>
-
-            <div>
-
-                <h2>2026</h2>
-
-                <p>Founded</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<section class="instagram">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <p>FOLLOW US</p>
-
-            <h2>@ariamodelmanagement</h2>
-
-        </div>
-
-        <div class="instagram-grid">
-
-            <img src="images/instagram/1.jpg" alt="">
-            <img src="images/instagram/2.jpg" alt="">
-            <img src="images/instagram/3.jpg" alt="">
-            <img src="images/instagram/4.jpg" alt="">
-            <img src="images/instagram/5.jpg" alt="">
-            <img src="images/instagram/6.jpg" alt="">
-
-        </div>
-
-    </div>
-
-</section>
-
-<footer>
-
-    <div class="container footer-grid">
-
-        <div>
-
-            <h3>
-
-                ARIA
-
-            </h3>
-
-            <p>
-
-                Boutique representation for fashion,
-                commercial, and creator talent.
-
-            </p>
-
-        </div>
-
-        <div>
-
-            <h4>
-
-                Navigation
-
-            </h4>
-
-            <ul>
-
-                <li><a href="index.html">Home</a></li>
-
-                <li><a href="talent.html">Talent</a></li>
-
-                <li><a href="about.html">About</a></li>
-
-                <li><a href="submit.html">Apply</a></li>
-
-            </ul>
-
-        </div>
-
-        <div>
-
-            <h4>
-
-                Contact
-
-            </h4>
-
-            <p>
-
-                hello@ariamodelmanagement.com
-
-            </p>
-
-            <p>
-
-                New York, NY
-
-            </p>
-
-        </div>
-
-        <div>
-
-            <h4>
-
-                Follow
-
-            </h4>
-
-            <ul>
-
-                <li><a href="#">Instagram</a></li>
-
-                <li><a href="#">TikTok</a></li>
-
-                <li><a href="#">Facebook</a></li>
-
-                <li><a href="#">LinkedIn</a></li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-    <div class="copyright">
-
-        <p>
-
-            © 2026 Aria Model Management. All Rights Reserved.
-
-        </p>
-
-    </div>
-
-</footer>
-
-<script src="js/script.js"></script>
-
+  </section>
+
+  <main id="main">
+    <section class="section">
+      <div class="section-head">
+        <div><p class="eyebrow">The roster</p><h2 class="display">Featured <em>talent</em></h2></div>
+        <a class="link-arrow" href="women.html">View women</a>
+      </div>
+      <div class="roster" data-roster="featured"></div>
+    </section>
+
+    <section class="section section--ink">
+      <div class="statement">
+        <p class="eyebrow" style="color:#d77b8c">About the agency</p>
+        <p>TDTD Models is a <em>New York</em> based agency founded in 2024 by Kamani Karseladze, with the aim of curating and developing models into attractable talent for clientele across the country.</p>
+        <a class="link-arrow" href="about.html">Read more</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="tiles">
+        <a class="tile reveal" href="women.html"><img src="images/models/aria-carmona/03.jpg" alt="" loading="lazy"><span><em>Division</em>Women</span></a>
+        <a class="tile reveal" href="men.html"><img src="images/models/men-01/01.jpg" alt="" loading="lazy"><span><em>Division</em>Men</span></a>
+      </div>
+    </section>
+
+    <section class="band">
+      <p class="eyebrow" style="color:#f0c2ca">Open submissions</p>
+      <h2 class="display" style="margin-top:14px">Interested in <em>representation?</em></h2>
+      <a class="btn btn--light" href="submit.html">Apply now</a>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="js/gold.js"></script>
+  <script src="js/roster.js"></script>
+  <script src="js/main.js"></script>
 </body>
-
 </html>
