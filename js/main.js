@@ -120,7 +120,7 @@
           <a class="back-link" href="${m.division}.html">&larr; ${m.division === "men" ? "Men" : "Women"}</a>
           <p class="eyebrow">${m.division === "men" ? "Men" : "Women"}</p>
           <h1 class="display">${esc(m.name)}</h1>
-          <dl class="stats">${stats}</dl>
+          ${stats ? `<dl class="stats">${stats}</dl>` : `<p class="stats-note">Measurements available on request.</p>`}
           <div class="model-actions">
             <a class="btn" href="mailto:${EMAIL}?subject=${subject}">Inquire</a>
             ${m.instagram ? `<a class="link-arrow" href="https://www.instagram.com/${esc(m.instagram)}/" target="_blank" rel="noopener">@${esc(m.instagram)}</a>` : ""}

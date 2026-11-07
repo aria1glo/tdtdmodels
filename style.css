@@ -243,6 +243,7 @@ body.menu-open .site-header .brand img { filter: none; }
 .stats dt { color: var(--muted); letter-spacing: .18em; text-transform: uppercase; font-size: 12px; align-self: center; }
 .stats dd { margin: 0; font-weight: 400; }
 .model-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.stats-note { margin: 0 0 32px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; letter-spacing: .06em; }
 .back-link { display: inline-block; margin-bottom: 22px; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); text-decoration: none; }
 .back-link:hover { color: var(--burgundy); }
 .gallery { columns: 2; column-gap: 16px; }
