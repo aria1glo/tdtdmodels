@@ -14,6 +14,11 @@
   const page = document.body.dataset.page || "";
   const $ = (s, el = document) => el.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  // Roster order: alphabetical. Use "first" to sort by first name or "last" to sort by last name.
+  const SORT_BY = "first";
+  const sortKey = m => (SORT_BY === "last" ? m.name.trim().split(/\s+/).slice(-1)[0] : m.name.trim()).toLowerCase();
+  const byName = (a, b) => sortKey(a).localeCompare(sortKey(b), "en", { sensitivity: "base" }) || a.name.localeCompare(b.name);
+
   const link = ([href, label, key]) => `<a href="${href}"${key === page ? ' aria-current="page"' : ""}>${label}</a>`;
 
   /* ---------- header + footer (one source for every page) ---------- */
@@ -78,7 +83,7 @@
   function rosters() {
     document.querySelectorAll("[data-roster]").forEach(el => {
       const key = el.dataset.roster;
-      const list = (window.ROSTER || []).filter(m => key === "featured" ? m.featured : m.division === key);
+      const list = (window.ROSTER || []).filter(m => key === "featured" ? m.featured : m.division === key).sort(byName);
       el.innerHTML = list.map(card).join("") || '<p class="note-bar">No talent listed yet.</p>';
     });
   }

@@ -17,9 +17,9 @@ window.ROSTER = [
   /* ---------------- WOMEN ---------------- */
   { id: "aria-carmona", name: "Aria Carmona", division: "women", featured: true, instagram: "aria.glo",
     stats: { Height: `5'9"`, Bust: `34"`, Waist: `24"`, Hips: `34"`, Shoe: "10", Eyes: "Brown", Hair: "Black" },
-    images: photos("aria-carmona", 12) },
+    images: photos("aria-carmona", 6) },
 
-  { id: "kiyana-simmons", name: "Kiyana Simmons", division: "women", featured: true, instagram: "pretti_beyond",
+  { id: "kiyana-simmons", name: "Kiyana Simmons", division: "women", instagram: "pretti_beyond",
     stats: { Height: `5'2"`, Bust: `36"`, Waist: `33"`, Hips: `42"`, Shoe: "8", Eyes: "Brown", Hair: "Black" },
     images: photos("kiyana-simmons", 5) },
 
@@ -31,7 +31,7 @@ window.ROSTER = [
     stats: { Height: `6'0"`, Bust: `36"`, Waist: `28"`, Hips: `43"`, Eyes: "Brown", Hair: "Black" },
     images: photos("sanna-jackman", 5) },
 
-  { id: "isabella-sabillon", name: "Isabella Sabillon", division: "women", featured: true,
+  { id: "isabella-sabillon", name: "Isabella Sabillon", division: "women",
     stats: { Height: `5'4"`, Bust: `35"`, Waist: `27"`, Hips: `38"`, Dress: "4", Shoe: "8.5", Eyes: "Brown", Hair: "Brown" },
     images: photos("isabella-sabillon", 4) },
 
@@ -40,28 +40,29 @@ window.ROSTER = [
     images: photos("julia-nelson-aaron", 4) },
 
   { id: "lauren-dong", name: "Lauren Dong", division: "women", instagram: "laurenddong",
-    images: photos("lauren-dong", 1) },
+    images: photos("lauren-dong", 5) },
 
-  { id: "sira", name: "Sira", division: "women", instagram: "sira.ashh",
-    images: photos("sira-ashh", 1) },
+  { id: "sira", name: "Sira", division: "women", featured: true, instagram: "sira.ashh",
+    images: photos("sira-ashh", 5) },
 
-  { id: "phylicia", name: "Phylicia", division: "women", instagram: "phyliciaaxo",
-    images: photos("phylicia", 2) },
+  { id: "phylicia", name: "Phylicia Atherley", division: "women", instagram: "phyliciaaxo",
+    stats: { Height: `5'7"`, Bust: `30"`, Waist: `26"`, Hips: `37"`, Shoe: "9", Eyes: "Brown", Hair: "Black" },
+    images: photos("phylicia", 4) },
 
   { id: "val", name: "Val", division: "women", instagram: "val3m0r",
-    images: photos("val3m0r", 2) },
+    images: photos("val3m0r", 3) },
 
   { id: "amara-lopez", name: "Amara Lopez", division: "women", instagram: "valloryliz",
-    images: photos("amara-lopez", 2) },
+    images: photos("amara-lopez", 4) },
 
   /* ---------------- MEN ---------------- */
   { id: "jacob-fields", name: "Jacob Fields", division: "men", featured: true, instagram: "itboyjayke",
     stats: { Height: `6'0"`, Chest: `36"`, Waist: `30.5"` },
-    images: photos("jacob-fields", 4) },
+    images: photos("jacob-fields", 5) },
 
   { id: "manpal-singh", name: "Manpal Singh", division: "men", instagram: "manpal01",
-    images: photos("manpal-singh", 2) },
+    images: photos("manpal-singh", 4) },
 
-  { id: "chibuike-onukaogu", name: "Chibuike Onukaogu", division: "men", instagram: "chibuike_onukaogu",
-    images: photos("chibuike-onukaogu", 2) }
+  { id: "chibuike-onukaogu", name: "Chibuike Onukaogu", division: "men", featured: true, instagram: "chibuike_onukaogu",
+    images: photos("chibuike-onukaogu", 4) }
 ];
