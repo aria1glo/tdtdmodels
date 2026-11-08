@@ -193,7 +193,7 @@ body.menu-open .site-header .brand img { filter: none; }
   position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: var(--stone);
 }
 .card .frame img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 10%;
   transition: opacity .55s ease, transform 1.1s ease;
 }
 .card .frame img + img { opacity: 0; }
