@@ -2,7 +2,7 @@
    header + footer injection, roster grids, model profile page,
    lightbox, scroll reveal and the application form. */
 (function () {
-  const EMAIL = "tdtdmodels@gmail.com";
+  const EMAIL = "contact@tdtdmodels.com";
   const IG_URL = "https://www.instagram.com/tdtd_runwayz/";
   const IG_HANDLE = "@tdtd_runwayz";
   const NAV = [
