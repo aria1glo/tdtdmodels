@@ -3,6 +3,16 @@
    lightbox, scroll reveal and the application form. */
 (function () {
   const EMAIL = "contact@tdtdmodels.com";
+  // Visitor stats (GoatCounter, no cookies). Paste your site's counting URL between the quotes,
+  // e.g. "https://tdtdmodels.goatcounter.com/count". Leave it empty to switch tracking off.
+  const GOATCOUNTER = "https://tdtdmodels.goatcounter.com/count";
+  if (GOATCOUNTER) {
+    const gc = document.createElement("script");
+    gc.async = true;
+    gc.dataset.goatcounter = GOATCOUNTER;
+    gc.src = "https://gc.zgo.at/count.js";
+    document.head.appendChild(gc);
+  }
   const IG_URL = "https://www.instagram.com/tdtd_runwayz/";
   const IG_HANDLE = "@tdtd_runwayz";
   const NAV = [
