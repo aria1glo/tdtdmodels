@@ -52,9 +52,6 @@ window.ROSTER = [
   { id: "val", name: "Val", division: "women", instagram: "val3m0r",
     images: photos("val3m0r", 3) },
 
-  { id: "amara-lopez", name: "Amara Lopez", division: "women", instagram: "valloryliz",
-    images: photos("amara-lopez", 4) },
-
   /* ---------------- MEN ---------------- */
   { id: "jacob-fields", name: "Jacob Fields", division: "men", featured: true, instagram: "itboyjayke",
     stats: { Height: `6'0"`, Chest: `36"`, Waist: `30.5"` },
